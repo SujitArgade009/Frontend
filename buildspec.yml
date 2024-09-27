@@ -28,6 +28,8 @@ phases:
     commands:
       - echo  "Build has been successful!"
       - echo  "Listing the docker Image..."
+      - echo "Contents of dist directory:"
+      - ls -la dist || { echo "dist directory not found!"; exit 1; } # List contents
       - echo "Done"
 artifacts:
   files:
