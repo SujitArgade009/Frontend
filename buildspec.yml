@@ -29,7 +29,7 @@ phases:
       - echo  "Build has been successful!"
       - echo  "Listing the docker Image..."
       - echo "Done"
-  artifacts:
+artifacts:
   files:
     - dist/**/* # Include all files in the dist directory
   base-directory: dist # Specify the base directory for artifacts
