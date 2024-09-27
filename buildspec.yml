@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Installing npm dependencies..."
+      - npm install # Install project dependencies
+  pre_build:
+    commands:
+      - echo "Starting the build process..."
+  build:
+    commands:
+      - echo "Building the application"
+      - npm run build #build the application
+  post_build:
+    commands:
+      - echo  "Build has been successful"
