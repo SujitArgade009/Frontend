@@ -1,9 +1,11 @@
 version: 0.2
+
 env:
   parameter-store:
     DOCKER_REGISTRY_USERNAME: /myapp/docker-credentials/username
     DOCKER_REGISTRY_PASSWORD: /myapp/docker-credentials/password
     DOCKER_REGISTRY_URL: /myapp/docker-credentials/docker_registry
+
 phases:
   install:
     runtime-versions:
@@ -11,26 +13,29 @@ phases:
     commands:
       - echo "Installing npm dependencies..."
       - npm install # Install project dependencies
+
   pre_build:
     commands:
       - echo "Starting the build process..."
       - echo "Logging in to Docker registry..."
-      - echo "Attempting to login to Docker registry..."
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL" || { echo 'Docker login failed!'; exit 1; }
+
   build:
     commands:
       - echo "Building the application"
-      - npm run build #build the application
-      - echo "building the docker image"
+      - npm run build # Build the application
+      - echo "Contents of the dist directory after build:"
+      - ls -la dist || { echo "dist directory not found!"; exit 1; } # List contents
+      - echo "Building the Docker image"
       - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/sujit-github-frontend:latest" .
       - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/sujit-github-frontend:latest"
+
   post_build:
     commands:
-      - echo  "Build has been successful!"
-      - echo  "Listing the docker Image..."
-      - echo "Contents of dist directory:"
+      - echo "Build has been successful!"
+      - echo "Final contents of the dist directory:"
       - ls -la dist || { echo "dist directory not found!"; exit 1; } # List contents
-      - echo "Done"
+
 artifacts:
   files:
     - dist/**/* # Include all files in the dist directory
