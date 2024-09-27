@@ -26,5 +26,10 @@ phases:
       - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/sujit-github-frontend:latest"
   post_build:
     commands:
-      - echo  "Build has been successful"
-      -
+      - echo  "Build has been successful!"
+      - echo  "Listing the docker Image..."
+      - echo "Done"
+  artifacts:
+  files:
+    - dist/**/* # Include all files in the dist directory
+  base-directory: dist # Specify the base directory for artifacts
