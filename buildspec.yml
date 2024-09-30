@@ -37,6 +37,8 @@ phases:
       - ls -la dist || { echo "dist directory not found!"; exit 1; } # List contents
 
 artifacts:
-  base-directory: dist # Specify the base directory for artifacts
+  base-directory: dist
   files:
-    - '**/*' # Include all files in the base directory
+    - index.html
+    - vite.svg
+    - assets/**/*  # Include everything in the assets directory
