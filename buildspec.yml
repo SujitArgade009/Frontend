@@ -22,7 +22,7 @@ phases:
 
   build:
     commands:
-      - echo "Building the application"
+      - echo "Building the application" #Building the application
       - npm run build # Build the application
       - echo "Contents of the dist directory after build:"
       - ls -la dist || { echo "dist directory not found!"; exit 1; } # List contents
