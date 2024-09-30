@@ -37,6 +37,6 @@ phases:
       - ls -la dist || { echo "dist directory not found!"; exit 1; } # List contents
 
 artifacts:
-  files:
-    - dist/**/* # Include all files in the dist directory
   base-directory: dist # Specify the base directory for artifacts
+  files:
+    - '**/*' # Include all files in the base directory

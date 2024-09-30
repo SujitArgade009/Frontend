@@ -1,0 +1,49 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "access-analyzer:ListPolicyGenerations",
+        "access-analyzer:GetGeneratedPolicy",
+        "codestar-connections:ListConnections",
+        "codestar-connections:CreateConnection",
+        "codestar-connections:DeleteConnection",
+        "codestar-connections:GetConnection",
+        "codestar-connections:StartOAuthHandshake",
+        "codecommit:BatchGetRepositories",
+        "codecommit:GetRepository",
+        "access-analyzer:ValidatePolicy",
+        "s3:GetObject",
+        "s3:ListBucket",
+        "codepipeline:*"
+      ],
+      "Resource": ["*", "*"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["codebuild:*"],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["s3:*"],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["logs:*"],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["events:*"],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["codecommit:*"],
+      "Resource": "*"
+    }
+  ]
+}
