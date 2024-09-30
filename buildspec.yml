@@ -37,8 +37,6 @@ phases:
       - ls -la dist || { echo "dist directory not found!"; exit 1; } # List contents
 
 artifacts:
-  base-directory: dist
+  base-directory: dist  # This should match the directory where your files are located
   files:
-    - index.html
-    - vite.svg
-    - assets/**/*  # Include everything in the assets directory
+    - '**/*'  # This includes all files and directories within the base-directory
